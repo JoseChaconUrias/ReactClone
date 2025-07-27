@@ -34,8 +34,6 @@ function createDom(fiber) {
     });
 
   fiber.props.children.forEach((child) => render(child, dom));
-
-  container.appendChild(dom);
 }
 
 function render(element, container) {
@@ -60,7 +58,7 @@ function workLoop(deadline) {
 
 requestIdleCallback(workLoop);
 
-function performUnitOfWork(nextUnitOfWork) {
+function performUnitOfWork(fiber) {
   if (!fiber.dom) {
     fiber.dom = createDom(fiber);
   }
